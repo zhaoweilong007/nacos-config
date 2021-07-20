@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        context-path: /nacos
+        username: nacos
+        password: nacos
+        file-extension: yml
+        #命名空间
+        namespace: fe896d14-e5e1-4981-8d27-ec14c56a628a
+        group: nacos-consumer-prod
+  application:
+    name: nacos-consumer

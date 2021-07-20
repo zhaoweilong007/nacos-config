@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 31ba7e18-3ddb-4ec4-b2b9-c8f7c07e70b7
+        group: nacos-provider-prod
+      config:
+        server-addr: 127.0.0.1:8848
+        context-path: /nacos
+        #文件类型
+        file-extension: yml
+        #命名空间
+        namespace: 31ba7e18-3ddb-4ec4-b2b9-c8f7c07e70b7
+        group: nacos-provider-prod
+      username: nacos
+      password: nacos
+  application:
+    name: nacos-provider
