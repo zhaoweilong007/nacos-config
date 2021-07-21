@@ -12,6 +12,11 @@ import org.springframework.web.client.RestTemplate;
 @Configuration(proxyBeanMethods = false)
 public class DiscoveryConfig {
 
+  /**
+   * 负载均衡的restTemplate，默认策略轮询
+   *
+   * @return
+   */
   @Bean
   @LoadBalanced
   public RestTemplate restTemplate() {

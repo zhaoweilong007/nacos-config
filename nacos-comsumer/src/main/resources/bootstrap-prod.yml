@@ -1,14 +1,35 @@
 spring:
   cloud:
     nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: af6bd086-f3e3-4957-9c20-d7c49c6552f2
+        group: nacos-consumer-prod
       config:
         server-addr: 127.0.0.1:8848
         context-path: /nacos
-        username: nacos
-        password: nacos
         file-extension: yml
         #命名空间
-        namespace: fe896d14-e5e1-4981-8d27-ec14c56a628a
+        namespace: af6bd086-f3e3-4957-9c20-d7c49c6552f2
         group: nacos-consumer-prod
+      username: nacos
+      password: nacos
   application:
     name: nacos-consumer
+
+#开启fallback机制
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

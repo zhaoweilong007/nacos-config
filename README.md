@@ -77,6 +77,8 @@ db.user.0=root
 db.password.0=123456
 ~~~
 
+在本地创建对应的数据库，执行conf文件下的sql文件，导入nacos的表结构
+
 复制 cluster.conf.example 为cluster.conf到当前目录
 
 将cluster.conf中的ip修改为本机ip和nacos使用的端口
@@ -86,6 +88,8 @@ db.password.0=123456
 ## nacos多租户实现环境隔离
 
 登录nacos，新增两个租户的namespace，如zhangsan、lisi
+
+可以导入我的nacos配置在[nacos_export](./nacos_export),或者自己新建
 
 zhangsan下新建
 
@@ -131,7 +135,7 @@ spring:
 
 nacos-consumer同理
 
-ps:注意端口不要重复
+ps:注意端口不要重复,使用feign调用，不同namespace之间，不同group之间无法调用，必须在同一个namespace和group下服务才能发现
 
 最后分别启动nacos-provider:dev,nacos-provider:prod,nacos-consumer:dev,nacos-consumer:prod四个应用
 
@@ -139,7 +143,10 @@ ps:注意端口不要重复
 
 ### 配置优先级
 
-spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以 dataid 为 ${spring.application.name}.${file-extension:properties} 为前缀的基础配置，还加载了dataid为 ${spring.application.name}-${profile}.${file-extension:properties} 的基础配置。在日常开发中如果遇到多套环境下的不同配置，可以通过Spring 提供的 ${spring.profiles.active} 这个配置项来配置。
+spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以 dataid 为
+${spring.application.name}.${file-extension:properties} 为前缀的基础配置，还加载了dataid为
+${spring.application.name}-${profile}.${file-extension:properties}
+的基础配置。在日常开发中如果遇到多套环境下的不同配置，可以通过Spring 提供的 ${spring.profiles.active} 这个配置项来配置。
 
 Spring Cloud Alibaba Nacos Config 目前提供了三种配置能力从 Nacos 拉取相关的配置。
 

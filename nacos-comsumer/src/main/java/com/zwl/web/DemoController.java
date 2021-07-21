@@ -1,5 +1,6 @@
 package com.zwl.web;
 
+import com.zwl.client.RemoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -35,9 +36,11 @@ public class DemoController {
 
   @Autowired RestTemplate restTemplate;
 
+  @Autowired RemoteService remoteService;
 
   /**
-   * 使用服务名调用provider
+   * 使用restTemplate服务名调用provider
+   *
    * @param str 参数
    * @return
    */
@@ -46,5 +49,14 @@ public class DemoController {
     return restTemplate.getForObject("http://nacos-provider/each/" + str, String.class);
   }
 
-
+  /**
+   * 使用feign实现rpc调用
+   *
+   * @param str 参数
+   * @return
+   */
+  @GetMapping("each2/{str}")
+  public String each2(@PathVariable String str) {
+    return remoteService.each(str);
+  }
 }

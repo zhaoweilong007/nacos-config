@@ -3,20 +3,21 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: e57764fe-a534-4504-a15f-d10369bc84fd
-        group: nacos-provider-dev
+#        group: nacos-consumer
       config:
         server-addr: 127.0.0.1:8848
         context-path: /nacos
-        #文件类型
         file-extension: yml
-        #命名空间
-        namespace: e57764fe-a534-4504-a15f-d10369bc84fd
-        group: nacos-provider-dev
+#        group: nacos-consumer
       username: nacos
       password: nacos
   application:
-    name: nacos-provider
+    name: nacos-consumer
+
+#开启fallback机制
+feign:
+  hystrix:
+    enabled: true
 
 management:
   endpoints:

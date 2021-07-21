@@ -16,4 +16,12 @@
     <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.zwl</groupId>
+      <artifactId>api-interface</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
 </project>
