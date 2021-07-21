@@ -3,12 +3,12 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-#        group: nacos-consumer
+      #        group: nacos-consumer
       config:
         server-addr: 127.0.0.1:8848
         context-path: /nacos
         file-extension: yml
-#        group: nacos-consumer
+      #        group: nacos-consumer
       username: nacos
       password: nacos
   application:
@@ -17,6 +17,11 @@ spring:
 #开启fallback机制
 feign:
   hystrix:
+    enabled: true
+    #使用okhttp
+  httpclient:
+    enabled: false
+  okhttp:
     enabled: true
 
 management:
