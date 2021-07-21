@@ -1,5 +1,6 @@
 package com.zwl.client;
 
+import com.zwl.config.FeignConfig;
 import com.zwl.fallback.RemoteServiceFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(
     contextId = "remoteService",
     value = "nacos-provider",
-    fallbackFactory = RemoteServiceFallbackFactory.class)
+    fallbackFactory = RemoteServiceFallbackFactory.class,configuration = FeignConfig.class)
 public interface RemoteService {
 
   @GetMapping("/each/{str}")
